@@ -32,7 +32,7 @@ proxyClient.on("packet", (data, meta) => {
       if (previousQueueNumber !== queueNumber) {
         const currentTime = new Date().toLocaleTimeString(); // Get the current time
         console.log(`[${currentTime}] Position in queue: ${queueNumber}`); // Display time with queue position
-        WEBHOOK.send({
+        WEBHOOK.webhookURL.send({
           content: `[${currentTime}] Position in queue: ${queueNumber}`,
           username: "2b2t proxy",
           avatarURL: "https://pbs.twimg.com/media/EjVehVWWoAMd5QK?format=jpg&name=900x900"
@@ -61,7 +61,7 @@ proxyClient.on("end", () => {
 proxyClient.on("error", (error) => {
   if (!userClient) return;
   console.error("Proxy client error:", error);
-  WEBHOOK.send({
+  WEBHOOK.webhookURL.send({
     content: `[${currentTime}] Proxy error received: ${error}`,
     username: "2b2t proxy",
     avatarURL: "https://pbs.twimg.com/media/EjVehVWWoAMd5QK?format=jpg&name=900x900"
@@ -79,7 +79,7 @@ const proxyServer = createServer({
 
 proxyServer.on("login", (client) => {
   console.log(`${client.username} has connected`);
-  WEBHOOK.send({
+  WEBHOOK.webhookURL.send({
     content: `[${currentTime}] ${client.username} has connected!`,
     username: "2b2t proxy",
     avatarURL: "https://pbs.twimg.com/media/EjVehVWWoAMd5QK?format=jpg&name=900x900"
@@ -107,7 +107,7 @@ proxyServer.on("login", (client) => {
   client.on("end", () => {
     if (!proxyClient) return;
     console.log(`${client.username} has disconnected`);
-    WEBHOOK.send({
+    WEBHOOK.webhookURL.send({
       content: `[${currentTime}] ${client.username} has disconnected!`,
       username: "2b2t proxy",
       avatarURL: "https://pbs.twimg.com/media/EjVehVWWoAMd5QK?format=jpg&name=900x900"
@@ -117,7 +117,7 @@ proxyServer.on("login", (client) => {
   client.on("error", (error) => {
     if (!proxyClient) return;
     console.error(error);
-    WEBHOOK.send({
+    WEBHOOK.webhookURL.send({
       content: `[${currentTime}] Error received: ${error}`,
       username: "2b2t proxy",
       avatarURL: "https://pbs.twimg.com/media/EjVehVWWoAMd5QK?format=jpg&name=900x900"
