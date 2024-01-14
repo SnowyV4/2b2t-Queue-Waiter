@@ -1,0 +1,25 @@
+{
+  "name": "queue-waiter",
+  "version": "1.0.0",
+  "description": "A minecraft proxy which can be be used to wait out 2b2t's queue without having to have your game open",
+  "main": "src/proxy.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OBNinjaa/queue-waiter.git"
+  },
+  "keywords": [
+    "minecraft",
+    "proxy",
+    "mineflayer"
+  ],
+  "author": "OBNinja and SnowyV4",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SnowyV4/2b2t-Queue-Waiter/issues"
+  },
+  "homepage": "https://github.com/SnowyV4/2b2t-Queue-Waiter",
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "minecraft-protocol": "^1.36.1"
+  }
+}
